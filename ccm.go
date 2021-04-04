@@ -360,11 +360,11 @@ func (ccmt *CCMType) Seal(dst, nonce, plaintext, adata []byte) (rv []byte) {
 		nonce = nonce[0:NonceLength]
 	}
 
-	if ll := 15 - NonceLength; ll != int(ccmt.L) {
-		// godebug.Printf(db1, "****************** l=%d ccmt.L=%d\n", ll, ccmt.L)
-		ccmt.err = ErrInvalidNonceLength
-		return
-	}
+	// if ll := 15 - NonceLength; ll != int(ccmt.L) {
+	// 	// godebug.Printf(db1, "****************** l=%d ccmt.L=%d\n", ll, ccmt.L)
+	// 	ccmt.err = ErrInvalidNonceLength
+	// 	return
+	// }
 
 	aTag, err := ccmt.calculateCcmTag(nonce, plaintext, adata)
 	if err != nil {
